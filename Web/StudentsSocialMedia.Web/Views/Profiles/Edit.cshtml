@@ -1,0 +1,124 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Profiles.EditProfileInputModel
+@{
+    this.ViewData["Title"] = "Edit your profile";
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+
+    label {
+        color: #515365;
+        font-size: 16px;
+    }
+</style>
+
+<div class="header-spacer"></div>
+
+<div class="row justify-content-center">
+    <div class="col-md-2"></div>
+    <form method="post" class="register-form col-8 rounded border  p-3 mb-5 bg-white" id="editForm">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row example mb-lg-5"></div>
+        <h2 class="text-center">@this.ViewData["Title"]</h2>
+        <div class="row example mb-lg-5"></div>
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-5">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control " style="border-color: #c0c3cf;" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-sm-5">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control " style="border-color: #c0c3cf;" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row example mb-lg-4"></div>
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label asp-for="TownId"></label>
+                <select asp-for="TownId" class="form-control " style="border-color: #c0c3cf;" asp-items="@this.Model.Towns"></select>
+                <span asp-validation-for="TownId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row example mb-lg-4"></div>
+        <div class="row">
+            <div class="form-group" style="padding-left:7em;">
+                <div class="form-radio">
+                    <label for="gender" class="radio-label">
+                        Gender :
+                    </label>
+                    <div class="form-radio-item" style="margin-bottom:1px;">
+                        <input type="radio" asp-for="Gender" id="male" value="Male" checked class="form-check-input" style="margin-left:-74px;margin-bottom:-15px;">
+                        <label for="male" style="margin-left:17px; margin-top: -1px;">Male</label>
+                        <span class="check"></span>
+                    </div>
+                    <div class="form-radio-item">
+                        <input type="radio" asp-for="Gender" id="female" value="Female" checked class="form-check-input" style="margin-left:-74px; margin-bottom:-18px;">
+                        <label for="female" style="margin-left:17px;">Female</label>
+                        <span class="check"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row example mb-lg-4"></div>
+        <div class="form-row justify-content-center">
+            <div class="form-group  col-sm-5">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control " style="border-color: #c0c3cf;" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group  col-sm-5">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control " style="border-color: #c0c3cf;" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row example mb-lg-4"></div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label asp-for="BirthDate"></label>
+                <input asp-for="BirthDate" class="form-control " style="border-color: #c0c3cf;" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row example mb-lg-4"></div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label>Username</label>
+                <input asp-for="UserName" class="form-control " style="border-color: #c0c3cf;" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+        </div>
+        <div class="row example mb-lg-5"></div>
+        <div class="form-row justify-content-center">
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">Save changes</button>
+        </div>
+        <div class="row example mb-lg-5"></div>
+    </form>
+</div>
+<!-- Modal -->
+@*<div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Do you confirm this changes?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editForm.submit()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>*@

@@ -1,0 +1,88 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Groups.AllMembersByIdListViewModel
+@{
+    this.ViewData["Title"] = "Members of this Group";
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<div class="header-spacer"></div>
+
+<h1 class="text-center" style="padding-left:3em;">@this.ViewData["Title"]</h1>
+<div class="row" style="visibility: hidden;">k</div>
+<div class="row" style="visibility: hidden;">k</div>
+<div class="row justify-content-center responsive-flex">
+    <div class="container" style="margin-left: 275px; margin-right: -125px;">
+        <div class="row">
+            <div class="row col-md-10 responsive-flex">
+
+                <!-- Friend Item -->
+
+                @foreach (var member in this.Model.Members)
+                {
+                <div class="ui-block col-md-4 responsive-flex">
+                    <div class="friend-item">
+                        <div class="row" style="visibility: hidden;">k</div>
+                        <div class="row" style="visibility: hidden;">k</div>
+                        <div class="row" style="visibility: hidden;">k</div>
+                        <div class="row" style="visibility: hidden;">k</div>
+                        <div class="row" style="visibility: hidden;">k</div>
+                        <div class="row" style="visibility: hidden;">k</div>
+                        <div class="friend-item-content">
+
+                            <div class="friend-avatar">
+                                <div class="row justify-content-center" style="margin-left: 24px;">
+                                    <div class="author-thumb">
+                                        <img loading="lazy" class="img-fluid" src="@member.ImageUrl" style="width: 73px; height: 70px;">
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center" style="margin-left: 1px;">
+                                    <div class="author-content">
+                                        <a asp-controller="Profiles" asp-action="Timeline" asp-route-id="@member.MemberId" class="h5 author-name">@member.MemberUserName</a>
+                                        <div class="country">@member.MemberTownName</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-container" data-slide="fade">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="friend-count" data-swiper-parallax="-500">
+                                            <a href="#" class="friend-count-item">
+                                                <div class="h6">@member.MemberFollowersCount</div>
+                                                <div class="title">Followings</div>
+                                            </a>
+                                            <a href="#" class="friend-count-item">
+                                                <div class="h6">@member.MemberFollowingsCount</div>
+                                                <div class="title">Followers</div>
+                                            </a>
+                                            <a href="#" class="friend-count-item">
+                                                <div class="h6">@member.MemberImagesCount</div>
+                                                <div class="title">Photos</div>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <!-- If we need pagination -->
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                    
+                }
+
+                <!-- ... end Friend Item -->
+            </div>
+        </div>
+    </div>
+</div>

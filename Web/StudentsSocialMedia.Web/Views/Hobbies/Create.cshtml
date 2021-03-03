@@ -1,0 +1,34 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Hobbies.CreateHobbyInputModel
+@{ 
+    this.ViewData["Title"] = "Add a new hobby";
+} 
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+
+    .form-group {
+        background-color: #ffffff;
+    }
+
+    .btn {
+        width: 175px;
+    }
+</style>
+
+<div class="header-spacer"></div>
+<form method="post" class="col-md-6 offset-md-3">
+    <h1 style="margin-left: 140px;">@this.ViewData["Title"]</h1>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <select multiple="multiple" class="multi-select form-control" id="my_multi_select1" asp-for="@this.Model.Hobbies" asp-items="@this.Model.HobbiesItems">
+        </select>
+    </div>
+    
+    <div class="row justify-content-center" style="padding-left: 2em;">
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </div>
+</form>

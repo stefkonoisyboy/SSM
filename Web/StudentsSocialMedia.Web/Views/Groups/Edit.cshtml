@@ -1,0 +1,92 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Groups.EditGroupInputModel
+@{
+    this.ViewData["Title"] = "Edit this Group";
+}
+
+<style>
+    .btn {
+        width: 175px;
+    }
+
+    label {
+        color: #515365;
+        font-size: 16px;
+    }
+
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<div class="header-spacer"></div>
+
+<div class="row justify-content-center">
+    <div class="col-md-2"></div>
+    <form method="post" class="register-form col-8 rounded border p-3 mb-5 bg-white" id="editForm">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="row example mb-lg-5"></div>
+        <h2 class="text-center">@this.ViewData["Title"]</h2>
+        <div class="row example mb-lg-5"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control " style="border-color: #c0c3cf;" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row example mb-lg-4"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control " style="border-color: #c0c3cf;" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row example mb-lg-4"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label asp-for="SubjectId"></label>
+                <select asp-for="SubjectId" class="form-control " asp-items="@this.Model.SubjectsItems" style="border-color: #c0c3cf;"></select>
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <input type="hidden" asp-for="Id" />
+        <div class="row example mb-lg-5"></div>
+
+        <div class="row justify-content-center">
+            <button type="submit" class="btn btn-primary " data-toggle="modal" data-target="#modalEdit">Save changes</button>
+        </div>
+
+        <div class="row example mb-lg-5"></div>
+    </form>
+</div>
+
+<!-- Modal -->
+@*<div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Do you confirm this changes?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editForm.submit()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>*@

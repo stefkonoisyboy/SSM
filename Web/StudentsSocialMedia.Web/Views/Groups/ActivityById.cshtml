@@ -1,0 +1,186 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Groups.ActivityByIdViewModel
+@inject Microsoft.AspNetCore.Identity.UserManager<StudentsSocialMedia.Data.Models.ApplicationUser> userManager
+@{
+    this.ViewData["Title"] = "Info for this Group";
+    var user = await this.userManager.GetUserAsync(this.User);
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+<div class="row justify-content-center" style="margin-bottom: 100px; padding-left:8em;">
+    <div class="top-header-author">
+        @*<a href="02-ProfilePage.html" class="author-thumb">
+            <img loading="lazy" src="@this.Model.ImageUrl" style="width: 145%; height: 100%;">
+        </a>
+        <div class="author-content" style="margin-left: -8px; margin-right: -42px;">
+            <a class="h4 author-name" asp-route-id="@this.Model.Id">@this.Model.Name</a>
+            <div class="country">@this.Model.MembersCount Members in this Group</div>
+        </div>*@
+    </div>
+</div>
+
+<div class="container" >
+    <div class="row justify-content-center"style="margin-top:100px;padding-left: 9em;">
+        <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+            <ul class="profile-menu">
+                <li>
+                    <a asp-action="MembersById" asp-route-id="@this.Model.Id" style="color: #3f4257;">Members</a>
+                </li>
+                @if (this.Model.Members.Any(m => m.MemberUserName == user.UserName))
+                {
+                    <li>
+                        <a asp-controller="Messages" asp-action="AllById" asp-route-id="@this.Model.Id" style="color: #3f4257;">Messages</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Messages" asp-action="Create" asp-route-id="@this.Model.Id" style="color: #3f4257;">Enter a new Message</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="row" style="visibility:hidden">hdhhhhhhhhhhhhhhhh</div>
+    <div class="row" style="visibility:hidden">hdhhhhhhhhhhhhhhhh</div>
+    <div class="row" style="visibility:hidden">hdhhhhhhhhhhhhhhhh</div>
+
+    <div class="row justify-content-center" style="padding-left: 10em;">
+        <div class="ui-block col-md-9">
+            @foreach (var post in this.Model.Posts)
+            {
+                <article class="hentry post video">
+
+                    <div class="post__author author vcard inline-items">
+                        <img loading="lazy" src="@post.CreatorImageUrl">
+
+                        <div class="author-date">
+                            <a class="h6 post__author-name fn" style="font-size: 14px" ; asp-controller="Profiles" asp-action="Timeline" asp-route-id="@post.CreatorId">@post.CreatorUserName</a>
+                            <span style="font-size: 14px;">posted about </span>
+                            <a href="#" style="font-size: 14px;">@post.SubjectName</a>
+                            <div class="post__date" style="font-size: 14px;">
+                                <time class="published">
+                                    @post.CreatedOn
+                                </time>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 14px; padding-left: 1em;">@post.Content</p>
+
+                    <div class="row" style="font-size: 10px; visibility: hidden;">aaaaaa</div>
+
+                    <!--<div class="row">-->
+                        @*<div class="post-additional-info inline-items">*@
+                        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#" class="post-add-icon inline-items">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <span>@post.LikesCount</span>
+                        </a>-->
+
+                        @*<ul class="friends-harmonic">
+                                <li>
+                                    <a href="#">
+                                        <img loading="lazy" src="img/friend-harmonic9.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img loading="lazy" src="img/friend-harmonic10.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img loading="lazy" src="img/friend-harmonic7.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img loading="lazy" src="img/friend-harmonic8.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img loading="lazy" src="img/friend-harmonic11.jpg" alt="friend">
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="names-people-likes">
+                                <a href="#">Jenny</a>, <a href="#">Robert</a> and
+                                <br>18 more liked this
+                            </div>*@
+
+                        @*<div class="comments-shared">
+                                <a href="#" class="post-add-icon inline-items">
+                                    <svg class="olymp-speech-balloon-icon"><use xlink:href="#olymp-speech-balloon-icon"></use></svg>
+
+                                    <span>0</span>
+                                </a>
+
+                                <a href="#" class="post-add-icon inline-items">
+                                    <svg class="olymp-share-icon"><use xlink:href="#olymp-share-icon"></use></svg>
+
+                                    <span>16</span>
+                                </a>
+                            </div>*@
+
+
+                    @*</div>*@
+
+                    <div class="control-block-button post-control-button" style="padding-left: 58em; padding-top: 1em;">
+
+                        <a href="#" class="btn btn-control more" style="cursor: auto; background-color: #9a9fbf">
+                            @*<svg class="olymp-like-post-icon"><use xlink:href="#olymp-like-post-icon"></use></svg>*@
+                        </a>
+
+                        <a href="#" class="btn btn-control more" style="cursor: auto; background-color: #9a9fbf">
+                            @*<svg class="olymp-comments-post-icon"><use xlink:href="#olymp-comments-post-icon"></use></svg>*@
+                        </a>
+
+                        <a href="#" class="btn btn-control more" style="cursor: auto; background-color: #9a9fbf">
+                            @*<svg class="olymp-share-icon"><use xlink:href="#olymp-share-icon"></use></svg>*@
+                        </a>
+
+                    </div>
+
+                    <div class="row">
+                        &nbsp;&nbsp;
+                        @if (post.Likes.Any(l => l.PostId == post.Id && l.CreatorId == user.Id))
+                        {
+                            <div class="row justify-content-center">
+                                <form method="post" asp-controller="Likes" asp-action="Unlike" id="deleteForm" asp-route-id="@post.Id">
+                                    <button type="submit" class="btn btn-md-2" style="font-size: 14px; color:#515365;">
+                                        <img src="~/images/filled-heart.png" alt="filled-heart" style="width: 14px;" />
+                                        Unlike
+                                    </button>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row justify-content-center">
+                                <form method="post" asp-controller="Likes" asp-action="Like" id="deleteForm" asp-route-id="@post.Id">
+                                    <button type="submit" class="btn btn-md-2" style="font-size: 14px;color: #515365;">
+                                        <img src="~/images/heart.png" alt="heart-icon" style="width: 14px;" />
+                                        Like
+                                    </button>
+                                </form>
+                            </div>
+                        }
+
+                        <a asp-controller="Comments" asp-action="Create" asp-route-id="@post.Id" class="btn btn-md-2" style="color: #ff5e3a;font-size: 14px; padding-top: 1em;">Create new comment</a>
+                        <a asp-controller="Comments" asp-action="AllById" asp-route-id="@post.Id" class="btn btn-md-2" style="color: #ff5e3a; font-size: 14px; padding-top: 1em;">View all comments</a>
+                    </div>
+                </article>
+                <!-- Comment Form  -->
+
+                <!-- ... end Comment Form  -->
+            }
+        </div>
+    </div>
+</div>

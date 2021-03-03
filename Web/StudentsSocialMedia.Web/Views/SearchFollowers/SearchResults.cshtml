@@ -1,0 +1,112 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Followers.AllFollowersListViewModel
+@{
+    this.ViewData["Title"] = "Search results";
+}
+
+<style>
+    .img-fluid {
+        width: 160px;
+    }
+</style>
+
+<div class="header-spacer"></div>
+@if (this.Model.Followers.Count() == 0)
+{
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-4"></div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-1"></div>
+        <div class="form-group">
+            <div class="row justify-content-center">
+                <img src="~/images/search.png" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="row example mb-lg-5"></div>
+
+            <div class="row justify-content-center">
+                <h3>No results were found!</h3>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row justify-content-center" style="margin-left: 60px;">
+        <h1>@this.ViewData["Title"]</h1>
+    </div>
+    @foreach (var follower in this.Model.Followers)
+    {
+        <div class="friend-item">
+            <div class="header-spacer"></div>
+            <div class="header-spacer" style="height: 60px;"></div>
+            @*<div class="friend-header-thumb">
+                    <img loading="lazy" src="img/friend1.webp" alt="friend" width="318" height="122">
+                </div>*@
+
+            <div class="friend-item-content">
+
+                <div class="friend-avatar">
+                    <div class="row justify-content-center" style="margin-left: 80px;">
+                        <div class="author-thumb">
+                            <img loading="lazy" class="img-fluid" src="@follower.ImageUrl" style="height:100%; width: 103%;">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center" style="margin-left: 80px;">
+                        <div class="author-content">
+                            <a asp-controller="Profiles" asp-action="Timeline" asp-route-id="@follower.FollowersId" class="h5 author-name">@follower.FollowersUserName</a>
+                            <div class="country">@follower.FollowersTownName</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-container" data-slide="fade" style="margin-left:80px;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="friend-count" data-swiper-parallax="-500">
+                                <a href="#" class="friend-count-item">
+                                    <div class="h6">@follower.FollowersFollowersCount</div>
+                                    <div class="title">Followings</div>
+                                </a>
+                                <a href="#" class="friend-count-item">
+                                    <div class="h6">@follower.FollowersFollowingsCount</div>
+                                    <div class="title">Followers</div>
+                                </a>
+                                <a href="#" class="friend-count-item">
+                                    <div class="h6">@follower.FollowersImagesCount</div>
+                                    <div class="title">Photos</div>
+                                </a>
+
+                            </div>
+                            <div class="control-block-button" data-swiper-parallax="-100">
+                                <a href="#" class="btn btn-control bg-blue">
+                                    <svg class="olymp-happy-face-icon"><use xlink:href="#olymp-happy-face-icon"></use></svg>
+                                </a>
+
+                                <a href="#" class="btn btn-control bg-purple">
+                                    <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <p class="friend-about" data-swiper-parallax="-500">
+                                Hi!, I’m Marina and I’m a Community Manager for “Gametube”. Gamer and full-time mother.
+                            </p>
+
+                            <div class="friend-since" data-swiper-parallax="-100">
+                                <span>Friends Since:</span>
+                                <div class="h6">December 2014</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    }
+}

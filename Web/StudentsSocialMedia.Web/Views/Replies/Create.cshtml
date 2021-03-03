@@ -1,0 +1,47 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Home.CreateReplyInputModel
+@{
+    this.ViewData["Title"] = "Make a reply for this comment";
+}
+
+<style>
+    .btn {
+        width: 175px;
+    }
+
+    label {
+        color: #515365;
+        font-size: 16px;
+    }
+
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<div class="header-spacer"></div>
+<div class="row justify-content-center">
+    <div class="col-md-2"></div>
+    <form method="post" class="col-8 rounded border p-3 mb-5 bg-white">
+        <div class="row example mb-lg-5"></div>
+
+        <h1 class="text-center">@this.ViewData["Title"]</h1>
+
+        <div class="row example mb-lg-5"></div>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label>Content</label>
+                <input asp-for="Content" class="form-control " style="border-color: #c0c3cf;"/>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row example mb-lg-5"></div>
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-md-2" value="Submit" />
+            </div>
+        </div>
+        <div class="row example mb-lg-5"></div>
+    </form>
+</div>

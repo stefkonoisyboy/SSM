@@ -1,0 +1,358 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Followers.AllFollowersListViewModel
+@{
+    this.ViewData["Title"] = "All Followers";
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<body class="page-has-left-panels page-has-right-panels">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-568DJSG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Preloader -->
+    @*<div id="hellopreloader">
+            <div class="preloader">
+                <svg width="45" height="45" stroke="#fff">
+                    <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+                        <circle cx="22" cy="22" r="6" stroke="none">
+                            <animate attributeName="r" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22" />
+                            <animate attributeName="stroke-opacity" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0" />
+                            <animate attributeName="stroke-width" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0" />
+                        </circle>
+                        <circle cx="22" cy="22" r="6" stroke="none">
+                            <animate attributeName="r" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22" />
+                            <animate attributeName="stroke-opacity" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0" />
+                            <animate attributeName="stroke-width" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0" />
+                        </circle>
+                        <circle cx="22" cy="22" r="8">
+                            <animate attributeName="r" begin="0s" calcMode="linear" dur="1.5s" repeatCount="indefinite" values="6;1;2;3;4;5;6" />
+                        </circle>
+                    </g>
+                </svg>
+
+                <div class="text">Loading ...</div>
+            </div>
+        </div>*@
+
+    <!-- ... end Preloader -->
+    <!-- Fixed Sidebar Left -->
+
+    <div class="fixed-sidebar left">
+        <div class="fixed-sidebar-left sidebar--small fixed-sidebar-responsive" id="sidebar-left" style="width: 240px; background-color: #3f4257; margin-top: 70px; border-top-style: solid;">
+
+            @*<a href="02-ProfilePage.html" class="logo">
+                    <div class="img-wrap">
+                        <img loading="lazy" src="img/logo.webp" alt="Olympus" width="34" height="34">
+                    </div>
+                </a>*@
+
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="left-menu" style="font-size: 16px;">
+                    <li>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Groups" asp-action="Index">Groups</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Tests" asp-action="Index">Competition Page</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-light" asp-area="Forum" asp-controller="Categories" asp-action="All">Forum</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- ... end Fixed Sidebar Left -->
+    <!-- Fixed Sidebar Left -->
+    <!-- ... end Fixed Sidebar Right-Responsive -->
+    <!-- Header-BP -->
+
+    <header class="header" id="site-header">
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-568DJSG');</script>
+        <!-- End Google Tag Manager -->
+
+        <div class="page-title">
+            <div style="font-size: 16px;"><strong>SSM</strong></div>
+        </div>
+
+        <div class="header-content-wrapper">
+            <div class="control-block">
+                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-size: 16px;">Hello, @this.User.Identity.Name!</a>
+            </div>
+            <div class="control-block">
+                <a asp-controller="SearchUsers" asp-action="Search" class=" text-light" style="font-size: 16px;">Click here to search for users</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ... end Header-BP -->
+    <!-- Responsive Header-BP -->
+
+    <header class="header header-responsive" id="site-header-responsive">
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-568DJSG');</script>
+        <!-- End Google Tag Manager -->
+        <!-- Tab panes -->
+        <!-- ... end  Tab panes -->
+
+    </header>
+
+    <!-- ... end Responsive Header-BP -->
+    <div class="header-spacer"></div>
+    <div class="header-spacer" style="height: 70px;"></div>
+
+
+    <!-- Top Header-Profile -->
+
+    <div class="container" style="margin-right: -90px;">
+        <div class="row">
+            <div class="col col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="ui-block" style="margin-left: 100px;">
+                    <div class="top-header">
+                        <div class="top-header-thumb">
+                            <div style="visibility:hidden;">----------------------------------</div>
+                        </div>
+                        <div class="profile-section">
+                            <div class="row">
+                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+                                        <li>
+                                            <a asp-controller="Profiles" asp-action="Timeline" asp-route-id="@this.Model.UserInfo.Id">Timeline</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Profiles" asp-action="About" asp-route-id="@this.Model.UserInfo.Id">About</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2"></div>
+                                <div class="col col-lg-5 ms-auto col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+                                        <li>
+                                            <a asp-controller="Images" asp-action="AllById" asp-route-id="@this.Model.UserInfo.Id">Photos</a>
+                                        </li>
+                                        @if (this.User.Identity.Name == this.Model.UserInfo.UserName)
+                                        {
+                                            <li>
+                                                <a asp-controller="Profiles" asp-action="Edit">Edit</a>
+                                            </li>
+                                        }
+                                        <li>
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg>
+                                                <ul class="more-dropdown more-with-triangle">
+                                                    <li>
+                                                        <a href="#">Report Profile</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Block Profile</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="control-block-button">
+                                <a href="35-YourAccount-FriendsRequests.html" class="btn btn-control bg-blue">
+                                    <svg class="olymp-happy-face-icon"><use xlink:href="#olymp-happy-face-icon"></use></svg>
+                                </a>
+
+                                <a href="#" class="btn btn-control bg-purple">
+                                    <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
+                                </a>
+
+                                <div class="btn btn-control bg-primary more" style="cursor: auto">
+                                    @*<svg class="olymp-settings-icon"><use xlink:href="#olymp-settings-icon"></use></svg>
+
+                                        <ul class="more-dropdown more-with-triangle triangle-bottom-right">
+                                            <li>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#update-header-photo">Update Profile Photo</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#update-header-photo">Update Header Photo</a>
+                                            </li>
+                                            <li>
+                                                <a href="29-YourAccount-AccountSettings.html">Account Settings</a>
+                                            </li>
+                                        </ul>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-header-author">
+                            <a href="02-ProfilePage.html" class="author-thumb">
+                                <img loading="lazy" src="@this.Model.UserInfo.UserProfileImageUrl" style="width: 145%; height: 100%;">
+                            </a>
+                            <div class="author-content">
+                                <a href="02-ProfilePage.html" class="h4 author-name">@this.Model.UserInfo.UserName</a>
+                                <div class="country">@this.Model.UserInfo.TownName</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Top Header-Profile -->
+
+    <div class="container" style="margin-right: -145px;">
+        <div class="row">
+            <div class="col col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="ui-block responsive-flex" style="margin-left: 100px;">
+                    <div class="ui-block-title ">
+                        <div class="h6 title text-center">@this.Model.UserInfo.UserName’s Followers (@this.Model.Followers.Count())</div>
+                        <form asp-controller="SearchFollowers" asp-action="SearchResults" asp-route-id="@this.Model.UserInfo.Id" class="form-group">
+
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label style="color: #515365; font-size: 16px;">Username</label>
+                                <input asp-for="Input.UserName" class="form-control" style="border-color: #c0c3cf;" placeholder="Search Followers...">
+                                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                            </div>
+                            <div class="row example mb-lg-2"></div>
+                            <div class="row justify-content-center">
+                                <input type="submit" class="btn btn-primary btn-md-2 " style="width: 175px;" value="Search" />
+                            </div>
+                            <div class="row example mb-lg-3"></div>
+                        </form>
+                        <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="visibility:hidden;">hhhhh</div>
+    <!-- Friends -->
+    <div class="row justify-content-center responsive-flex">
+        <div class="container" style="margin-left: 275px; margin-right: -125px;">
+            <div class="row">
+                <div class="row col-md-10 responsive-flex">
+
+                    <!-- Friend Item -->
+
+                    @foreach (var follower in this.Model.Followers)
+                    {
+                        <div class="ui-block col-md-4 responsive-flex">
+                            <div class="friend-item">
+
+                                <div class="row" style="visibility: hidden;">k</div>
+                                <div class="row" style="visibility: hidden;">k</div>
+                                <div class="row" style="visibility: hidden;">k</div>
+                                <div class="row" style="visibility: hidden;">k</div>
+                                <div class="row" style="visibility: hidden;">k</div>
+                                <div class="row" style="visibility: hidden;">k</div>
+
+                                <div class="friend-item-content">
+
+                                    <div class="friend-avatar">
+                                        <div class="row justify-content-center" style="margin-left: 24px;">
+                                            <div class="author-thumb">
+                                                <img loading="lazy" class="img-fluid" src="@follower.ImageUrl" style="width: 73px; height: 70px;">
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center" style="margin-left: 1px;">
+                                            <div class="author-content">
+                                                <a asp-controller="Profiles" asp-action="Timeline" asp-route-id="@follower.FollowersId" class="h5 author-name">@follower.FollowersUserName</a>
+                                                <div class="country">@follower.FollowersTownName</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-container" data-slide="fade">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="friend-count" data-swiper-parallax="-500">
+                                                    <a href="#" class="friend-count-item">
+                                                        <div class="h6">@follower.FollowersFollowersCount</div>
+                                                        <div class="title">Followings</div>
+                                                    </a>
+                                                    <a href="#" class="friend-count-item">
+                                                        <div class="h6">@follower.FollowersFollowingsCount</div>
+                                                        <div class="title">Followers</div>
+                                                    </a>
+                                                    <a href="#" class="friend-count-item">
+                                                        <div class="h6">@follower.FollowersImagesCount</div>
+                                                        <div class="title">Photos</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- If we need pagination -->
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- ... end Friend Item -->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Friends -->
+    <!-- Window-popup Update Header Photo -->
+    <!-- ... end Window-popup Update Header Photo -->
+    <!-- Window-popup Choose from my Photo -->
+    <!-- ... end Window-popup Choose from my Photo -->
+    <!-- Window-popup-CHAT for responsive min-width: 768px -->
+    <!-- ... end Window-popup-CHAT for responsive min-width: 768px -->
+    <!-- JS Scripts -->
+    <script src="js/jQuery/jquery-3.5.1.min.js"></script>
+
+    <script src="js/libs/jquery.mousewheel.min.js"></script>
+    <script src="js/libs/perfect-scrollbar.min.js"></script>
+    <script src="js/libs/imagesloaded.pkgd.min.js"></script>
+    <script src="js/libs/material.min.js"></script>
+    <script src="js/libs/selectize.min.js"></script>
+    <script src="js/libs/swiper.jquery.min.js"></script>
+    <script src="js/libs/isotope.pkgd.min.js"></script>
+    <script src="js/libs/ajax-pagination.min.js"></script>
+    <script src="js/libs/jquery.magnific-popup.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/libs-init/libs-init.js"></script>
+
+    <script src="Bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SVG icons loader -->
+    <script src="js/svg-loader.js"></script>
+    <!-- /SVG icons loader -->
+
+</body>

@@ -1,0 +1,33 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Subjects.CreateSubjectInputModel
+@{
+    this.ViewData["Title"] = "Add subjects to your collection";
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+    .form-group{
+        background-color: #ffffff;
+    }
+    .btn {
+        width: 175px;
+    }
+</style>
+
+<div class="header-spacer"></div>
+<form method="post" class="col-md-6 offset-md-3">
+    <h1>@this.ViewData["Title"]</h1>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <select multiple="multiple" class="multi-select form-control" id="my_multi_select1" asp-for="Subjects" asp-items="@this.Model.SubjectsItems">
+        </select>
+
+    </div>
+
+    <div class="row justify-content-center" style="padding-left: 2em;">
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </div>
+</form>

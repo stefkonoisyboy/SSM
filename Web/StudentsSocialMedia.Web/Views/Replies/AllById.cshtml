@@ -1,0 +1,87 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Replies.AllRepliesListViewModel;
+@{
+    this.ViewData["Title"] = "All replies for this comment";
+}
+
+<style>
+    .img-fluid {
+        width: 160px;
+    }
+
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<div class="header-spacer"></div>
+
+@if (this.Model.RepliesCount == 0)
+{
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-4"></div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-1"></div>
+        <div class="form-group">
+
+            <div class="row justify-content-center">
+                <img src="~/images/comments.png" class="img-fluid" alt="Responsive image">
+            </div>
+
+            <div class="row example mb-lg-5"></div>
+
+            <div class="row justify-content-center">
+                <h2>There are no replies for this comment yet!</h2>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row justify-content-center" style="margin-right: -30px;">
+        <div class="col-md-2"></div>
+        <h1>@this.ViewData["Title"]</h1>
+    </div>
+
+    <div class="row example" style="visibility: hidden;">j</div>
+    <div class="row example" style="visibility: hidden;">j</div>
+    <div class="row justify-content-center" style="margin-right: -190px;">
+        @foreach (var reply in this.Model.Replies)
+        {
+            <ul class="comments-list col-md-7">
+                <li class="col-md-5"></li>
+                <li class="comment-item">
+                    <div class="control-block-button post-control-button" style="padding-left: 60.5em;">
+
+                        <a href="#" class="btn btn-control more" style="cursor: auto;background-color: #9a9fbf">
+                        </a>
+
+                        <a href="#" class="btn btn-control" style="cursor: auto;background-color: #9a9fbf">
+                        </a>
+
+                        <a href="#" class="btn btn-control" style="cursor: auto;background-color: #9a9fbf">
+                        </a>
+                    </div>
+
+                    <div class="post__author author vcard inline-items">
+                        <div class="row" style="visibility: hidden;">5555555</div>
+                        <img loading="lazy" class="img-fluid"  src="@reply.AuthorImageUrl" alt="author" width="15" height="10">
+
+                        <div class="author-date">
+                            <a class="h6 post__author-name fn" style="font-size: 14px;" asp-controller="Profiles" asp-action="Profile" asp-route-id="@reply.AuthorId">@reply.AuthorUserName</a>
+                            <div class="post__date" style="font-size: 14px;">
+                                <time class="published">
+                                    @reply.CreatedOn
+                                </time>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 14px; padding-left: 1em;">@reply.Content</p>
+                </li>
+            </ul>
+        }
+    </div>
+}

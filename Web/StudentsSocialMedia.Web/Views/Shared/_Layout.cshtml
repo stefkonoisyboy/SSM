@@ -1,0 +1,102 @@
+﻿@using StudentsSocialMedia.Common
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/material-design-iconic-font.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />*@
+
+</head>
+
+<body class="page-has-left-panels">
+    <div class="fixed-sidebar responsive-flex">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="fixed-sidebar-left sidebar--small fixed-sidebar-responsive" id="sidebar-left" style="width: 240px; background-color: #3f4257; margin-top: 70px; border-top-style: solid;">
+
+                @*<a href="02-ProfilePage.html" class="logo">
+                        <div class="img-wrap">
+                            <img loading="lazy" src="img/logo.png" alt="Olympus">
+                        </div>
+                    </a>*@
+
+                <div class="mCustomScrollbar" data-mcs-theme="dark">
+                    <ul class="left-menu" style="font-size: 16px;">
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li>
+                            <a class="text-light" asp-area="" asp-controller="Groups" asp-action="Index">Groups</a>
+                        </li>
+                        <li>
+                            <a class="text-light" asp-area="" asp-controller="Tests" asp-action="Index">Competition Page</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" asp-area="Forum" asp-controller="Categories" asp-action="All">Forum</a>
+                        </li>
+                    </ul>                    
+                </div>
+            </div>
+        }
+    </div>
+
+    <header class="header" id="site-header">
+        <nav class="navbar navbar-expand-sm" style="background-color: #3f4257;">
+            <div class="container">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="text-light" asp-area="" asp-controller="Home" asp-action="Index" style="font-size: 16px; margin-left: -50px; margin-top: 5px;"><strong>SSM</strong></div>
+
+                    <div class="header-content-wrapper" style="margin-right: -160px;">
+                        <div class="control-block">
+                            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-size: 16px; margin-top: 8px;">Hello, @this.User.Identity.Name!</a>
+                        </div>
+                        <div class="control-block">
+                            <a asp-controller="SearchUsers" asp-action="Search" class=" text-light" style="font-size: 16px;margin-top: 15px; ">Click here to search for users</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-light" asp-area="" asp-controller="Home" asp-action="Index" style="font-size: 17px; margin-top: 15px; padding-left: 38.5em;padding-right: 38.5em;"><strong>SSM</strong></div>
+                    
+                }
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @this.RenderBody()
+        </main>
+    </div>
+
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    @await this.RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+

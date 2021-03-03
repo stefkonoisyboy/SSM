@@ -1,0 +1,80 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Groups.AllSuggestedGroupsByIdListViewModel
+@inject Microsoft.AspNetCore.Identity.UserManager<StudentsSocialMedia.Data.Models.ApplicationUser> userManager
+@{
+    this.ViewData["Title"] = "Results from your search";
+    var user = await this.userManager.GetUserAsync(this.User);
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<div class="header-spacer"></div>
+
+<div class="row justify-content-center" style="margin-left: 50px;">
+    <h1>@this.ViewData["Title"]</h1>
+</div>
+<div class="row" style="visibility:hidden;">5</div>
+<div class="row" style="visibility:hidden;">5</div>
+<div class="container">
+    <div class="row justify-content-center" style="padding-left:5em;">
+        <div class="col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+
+            <!-- Friend Item -->
+
+            @foreach (var group in this.Model.SuggestedGroups)
+            {
+            <div class="friend-item friend-groups bg-white">
+                <div class="row" style="visibility:hidden;">5</div>
+                <div class="row" style="visibility:hidden;">5</div>
+                <div class="friend-item-content">
+                    <div class="friend-avatar">
+                        <div class="row justify-content-center">
+                            <div class="author-thumb" style="width: 60px;height: 60px;">
+                                <img loading="lazy" class="img-fluid" src="@group.ImageUrl" style="height:100%; width: 100%;">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="author-content">
+                                <a asp-controller="Groups" asp-action="ActivityById" asp-route-id="@group.Id" class="h5 author-name" style="font-size:16px;">@group.Name</a>
+                                <div class="country" style="font-size:14px;">@group.MembersCount</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (this.User.Identity.Name != group.CreatorUserName)
+                {
+                    @if (group.Members.Any(m => m.MemberId == user.Id))
+                    {
+                        <div class="row justify-content-center">
+                            <form method="post" asp-controller="Groups" asp-action="Unfollow" asp-route-id="@group.Id">
+                                <button type="submit" class="btn btn-danger btn-md-2">Unfollow</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row justify-content-center">
+                            <form method="post" asp-controller="Groups" asp-action="Follow" asp-route-id="@group.Id">
+                                <button type="submit" class="btn btn-danger btn-md-2">Follow</button>
+                            </form>
+                        </div>
+                    }
+                }
+                <div class="row" style="visibility:hidden;">5</div>
+                <div class="row" style="visibility:hidden;">5</div>
+            </div>
+
+                <div class="row" style="visibility:hidden;">5</div>
+            }
+
+            <!-- ... end Friend Item -->
+        </div>
+
+
+
+    </div>
+</div>

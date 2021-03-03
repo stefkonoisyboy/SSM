@@ -1,0 +1,515 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Images.AllImagesByIdListViewModel
+@{
+    this.ViewData["Title"] = "All photos";
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<body class="page-has-left-panels page-has-right-panels">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-568DJSG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Preloader -->
+    <!-- <div id="hellopreloader">
+        <div class="preloader">
+            <svg width="45" height="45" stroke="#fff">
+                <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+                    <circle cx="22" cy="22" r="6" stroke="none">
+                        <animate attributeName="r" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22"/>
+                        <animate attributeName="stroke-opacity" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0"/>
+                        <animate attributeName="stroke-width" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0"/>
+                    </circle>
+                    <circle cx="22" cy="22" r="6" stroke="none">
+                        <animate attributeName="r" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22"/>
+                        <animate attributeName="stroke-opacity" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0"/>
+                        <animate attributeName="stroke-width" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0"/>
+                    </circle>
+                    <circle cx="22" cy="22" r="8">
+                        <animate attributeName="r" begin="0s" calcMode="linear" dur="1.5s" repeatCount="indefinite" values="6;1;2;3;4;5;6"/>
+                    </circle>
+                </g>
+            </svg>
+
+            <div class="text">Loading ...</div>
+        </div>
+    </div>-->
+    <!-- ... end Preloader -->
+    <!-- Fixed Sidebar Left -->
+
+    <div class="fixed-sidebar left">
+        <div class="fixed-sidebar-left sidebar--small fixed-sidebar-responsive" id="sidebar-left" style="width: 240px; background-color: #3f4257; margin-top: 70px; border-top-style: solid;">
+
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="left-menu" style="font-size: 16px;">
+                    <li>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Groups" asp-action="Index">Groups</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Tests" asp-action="Index">Competition Page</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-light" asp-area="Forum" asp-controller="Categories" asp-action="All">Forum</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header class="header" id="site-header">
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-568DJSG');</script>
+        <!-- End Google Tag Manager -->
+
+        <div class="page-title">
+            <div style="font-size: 16px;"><strong>SSM</strong></div>
+        </div>
+
+        <div class="header-content-wrapper">
+            <div class="control-block">
+                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-size: 16px;">Hello, @this.User.Identity.Name!</a>
+            </div>
+            <div class="control-block">
+                <a asp-controller="SearchUsers" asp-action="Search" class=" text-light" style="font-size: 16px; ">Click here to search for users</a>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- ... end Header-BP -->
+    <!-- Responsive Header-BP -->
+
+    <header class="header header-responsive" id="site-header-responsive">
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-568DJSG');</script>
+        <!-- End Google Tag Manager -->
+        <!-- Tab panes -->
+        <!-- ... end  Tab panes -->
+
+    </header>
+
+    <!-- ... end Responsive Header-BP -->
+    <div class="header-spacer"></div>
+    <div class="header-spacer" style="height: 70px;"></div>
+
+    <!-- Top Header-Profile -->
+
+    <div class="container" style="margin-right: -90px;">
+        <div class="row">
+            <div class="col col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="ui-block" style="margin-left: 100px;">
+                    <div class="top-header">
+                        <div class="top-header-thumb">
+                            <div style="visibility:hidden;">----------------------------------</div>
+                        </div>
+                        <div class="profile-section">
+                            <div class="row">
+                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+                                        <li>
+                                            <a asp-controller="Profiles" asp-action="Timeline" asp-route-id="@this.Model.UserInfo.Id">Timeline</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Profiles" asp-action="About" asp-route-id="@this.Model.UserInfo.Id">About</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Followers" asp-action="AllById" asp-route-id="@this.Model.UserInfo.Id">Followers</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+                                        @if (this.User.Identity.Name == this.Model.UserInfo.UserName)
+                                        {
+                                            <li>
+                                                <a asp-controller="Profiles" asp-action="Edit">Edit</a>
+                                            </li>
+                                        }
+                                        <li>
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg>
+                                                <ul class="more-dropdown more-with-triangle">
+                                                    <li>
+                                                        <a href="#">Report Profile</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Block Profile</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="control-block-button">
+                                <a href="35-YourAccount-FriendsRequests.html" class="btn btn-control bg-blue">
+                                    <svg class="olymp-happy-face-icon"><use xlink:href="#olymp-happy-face-icon"></use></svg>
+                                </a>
+
+                                <a href="#" class="btn btn-control bg-purple">
+                                    <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
+                                </a>
+
+                                <div class="btn btn-control bg-primary more" style="cursor: auto">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-header-author">
+                            <a href="02-ProfilePage.html" class="author-thumb">
+                                <img loading="lazy" src="@this.Model.UserInfo.UserProfileImageUrl" style="width: 145%; height: 100%;">
+                            </a>
+                            <div class="author-content">
+                                <a href="02-ProfilePage.html" class="h4 author-name">@this.Model.UserInfo.UserName</a>
+                                <div class="country">@this.Model.UserInfo.TownName</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Top Header-Profile -->
+
+    <div class="container" style="margin-right: -140px;">
+        <div class="row">
+            <div class="col col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="ui-block responsive-flex" style="margin-left: 110px;">
+                    <div class="ui-block-title">
+                        <div class="h6 title" style="padding-left: 2em">@this.Model.UserInfo.UserName’s Photo Gallery</div>
+
+                        <div class="block-btn align-right">
+
+                            @if (this.User.Identity.Name == this.Model.UserInfo.UserName)
+                            {
+                                <a asp-action="Create" class="btn btn-primary btn-md-2" style="font-size: 14px;">Add Photos</a>
+                                <a asp-action="ChangeProfilePicture" class="btn btn-primary btn-md-2" style="font-size: 14px;">Change your profile picture</a>
+                            }
+                        </div>
+
+                        <ul class="nav nav-tabs photo-gallery" role="tablist">
+                            @*<li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#photo-page" role="tab">
+                                </a>
+                            </li>*@
+
+                            <li class="nav-item" style="margin-top:-2px;">
+                                <a class="nav-link active" data-toggle="tab" href="#album-page" role="tab">
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="visibility:hidden;">hhhhh</div>
+    <div class="row justify-content-center responsive-flex">
+        <div class="container" style="margin-left: 265px; margin-right: -220px;">
+            <div class="row">
+                <div class="col col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane" id="photo-page" role="tabpanel">
+
+                            <div class="photo-album-wrapper">
+
+                                <div class="photo-item half-width">
+                                    <img loading="lazy" src="img/photo-item1.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v1" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item2.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item3.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item4.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item5.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item6.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item7.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item8.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item9.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item10.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <div class="photo-item col-4-width">
+                                    <img loading="lazy" src="img/photo-item11.jpg" alt="photo">
+                                    <div class="overlay overlay-dark"></div>
+                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                    <a href="#" class="post-add-icon inline-items">
+                                        <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>
+                                        <span>15</span>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>
+                                    <div class="content">
+                                        <a href="#" class="h6 title">Header Photos</a>
+                                        <time class="published" datetime="2017-03-24T18:18">1 week ago</time>
+                                    </div>
+                                </div>
+
+
+                                <a href="#" class="btn btn-control btn-more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane active" id="album-page" role="tabpanel" >
+
+                            <div class="photo-album-wrapper">
+
+                                @foreach (var image in this.Model.Images)
+                                {
+                                    <div class="photo-album-item-wrap col-3-width">
+
+                                        <div class="photo-album-item">
+                                            <div class="photo-item">
+                                                <img loading="lazy" src="/images/users/@(image.Id + string.Empty + image.Extension)">
+                                                <div class="overlay overlay-dark"></div>
+                                                <!--<a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a>
+                                                <a href="#" class="post-add-icon">
+                                                    <svg class="olymp-heart-icon"><use xlink:href="#olymp-heart-icon"></use></svg>-->
+                                                    @*<span>324</span>*@
+                                                <!--</a>
+                                                <a href="#" data-toggle="modal" data-target="#open-photo-popup-v2" class="  full-block"></a>-->
+                                            </div>
+                                            
+
+
+                                            @if (this.User.Identity.Name == this.Model.UserInfo.UserName)
+                                            {
+                                                <div class="row" style="visibility:hidden;">---------------</div>
+                                                <div class="row justify-content-center">
+                                                    <form method="post" asp-action="Delete" id="deleteForm" asp-route-id="@image.Id">
+                                                        <button type="submit" class="btn btn-primary btn-md-2">Delete</button>
+                                                    </form>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Window-popup Open Photo Popup V1 -->
+    <!-- ... end Window-popup Open Photo Popup V1 -->
+    <!-- Window-popup Open Photo Popup V2 -->
+    <!-- Window-popup Open Photo Popup V2 -->
+    <!-- Window-popup Create Photo Album -->
+    <!-- ... end Window-popup Create Photo Album -->
+    <!-- Window-popup Update Header Photo -->
+    <!-- ... end Window-popup Update Header Photo -->
+    <!-- Window-popup Choose from my Photo -->
+    <!-- ... end Window-popup Choose from my Photo -->
+    <!-- Window-popup-CHAT for responsive min-width: 768px -->
+    <!-- ... end Window-popup-CHAT for responsive min-width: 768px -->
+    <!-- JS Scripts -->
+    <script src="js/jQuery/jquery-3.5.1.js"></script>
+    <script src="js/libs/jquery.appear.js"></script>
+    <script src="js/libs/jquery.mousewheel.js"></script>
+    <script src="js/libs/perfect-scrollbar.js"></script>
+    <script src="js/libs/svgxuse.js"></script>
+    <script src="js/libs/imagesloaded.pkgd.js"></script>
+    <script src="js/libs/Headroom.js"></script>
+    <script src="js/libs/popper.min.js"></script>
+    <script src="js/libs/material.min.js"></script>
+    <script src="js/libs/bootstrap-select.js"></script>
+    <script src="js/libs/smooth-scroll.js"></script>
+    <script src="js/libs/selectize.js"></script>
+    <script src="js/libs/swiper.jquery.js"></script>
+    <script src="js/libs/moment.js"></script>
+    <script src="js/libs/daterangepicker.js"></script>
+    <script src="js/libs/isotope.pkgd.js"></script>
+    <script src="js/libs/ajax-pagination.js"></script>
+    <script src="js/libs/jquery.magnific-popup.js"></script>
+    <script src="js/libs/aos.js"></script>
+    <script src="js/libs/purecounter_vanilla.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/libs-init/libs-init.js"></script>
+    <script defer src="fonts/fontawesome-all.js"></script>
+
+    <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <!-- SVG icons loader -->
+    <script src="js/svg-loader.js"></script>
+    <!-- /SVG icons loader -->
+
+</body>

@@ -1,0 +1,26 @@
+﻿<style>
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<div class="header-spacer"></div>
+
+@if (this.User.IsInRole("Teacher"))
+{
+    <div class="row justify-content-center" style="margin-left: 50px;">
+        <a asp-controller="Tests" asp-action="Create" class="btn btn-outline-primary">Create a new Test</a>
+    </div>
+    <div class="row justify-content-center" style="margin-left: 50px;">
+        <a asp-controller="Questions" asp-action="Create" class="btn btn-outline-primary">Add a new Question for given Test</a>
+    </div>
+}
+@if (this.User.IsInRole("Student"))
+{
+    <div class="row justify-content-center" style="margin-left: 50px;">
+        <a asp-controller="Tests" asp-action="AllBySubjects" class="btn btn-outline-primary">View Tests for You</a>
+    </div>
+}
+<div class="row justify-content-center" style="margin-left: 50px;">
+    <a asp-controller="Tests" asp-action="Ranking" class="btn btn-outline-primary">View the Rankings</a>
+</div>

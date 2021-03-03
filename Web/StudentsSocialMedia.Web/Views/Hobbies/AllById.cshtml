@@ -1,0 +1,9 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Hobbies.AllHobbiesByIdListViewModel
+@{
+    this.ViewData["Title"] = "All hobbies";
+}
+
+@foreach (var hobby in this.Model.Hobbies)
+{
+    <p>@hobby</p>
+}

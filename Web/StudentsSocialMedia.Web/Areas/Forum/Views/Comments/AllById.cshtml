@@ -1,0 +1,89 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Forum.Comments.AllCommentsByIdListViewModel
+@{
+    this.ViewData["Title"] = "All comments for this post";
+}
+
+<style>
+    .img-fluid {
+        width: 160px;
+    }
+
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<div class="header-spacer"></div>
+
+@if (this.Model.Comments.Count() == 0)
+{
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-5"></div>
+    <div class="row example mb-lg-4"></div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-1"></div>
+        <div class="form-group">
+            <div class="row justify-content-center">
+                <img src="~/images/comments.png" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="row example mb-lg-5"></div>
+
+            <div class="row justify-content-center">
+                <h3>There are no comments for this post yet!</h3>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row justify-content-center">
+        <div class="col-md-2"></div>
+        <h1>@this.ViewData["Title"]</h1>
+    </div>
+    <div class="row example" style="visibility: hidden;">j</div>
+    <div class="row example" style="visibility: hidden;">j</div>
+    @foreach (var comment in this.Model.Comments)
+    {
+        <div class="row justify-content-center" style="margin-right: -30px;">
+            <div class="col-md-2"></div>
+            <div class="component col-md-7">
+                <div class="card ">
+                    <div class="row example" style="visibility: hidden;">j</div>
+                    <div class="row" style="visibility: hidden;">5555555</div>
+                    <div class="row" style="padding-left:4em;">
+                        <div class="author-thumb">
+                            <img class="img-fluid" src="@comment.ImageUrl" style="height:40px; width: 40px;">
+                        </div>
+                        <a asp-area="" asp-controller="Profiles" asp-action="Timeline" asp-route-id="@comment.UserId" style="margin-top: 9px;">
+                            <h5>&nbsp;&nbsp;@comment.UserUserName</h5>
+                        </a>
+                    </div>
+                    <div style="margin-top: -5px; padding-left: 6.4em;">
+                        @comment.CreatedOn
+                    </div>
+
+                    <div class="row" style="visibility: hidden;">jjj</div>
+
+                    <div style="padding-left:4em;">
+                        <p style="font-size: 14px; ">@Html.Raw(comment.Content)</p>
+                    </div>
+
+                    <div class="row" style="visibility: hidden;">5555555</div>
+
+                    <div class="control-block-button post-control-button" style="padding-left: 55.2em; padding-top: 1em;">
+                        <a href="#" class="btn btn-control more" style="cursor: auto;background-color: #9a9fbf">
+                        </a>
+                        <a href="#" class="btn btn-control" style="cursor: auto;background-color: #9a9fbf">
+                        </a>
+                        <a href="#" class="btn btn-control" style="cursor: auto;background-color: #9a9fbf">
+                        </a>
+                    </div>
+                    <div class="row example" style="visibility: hidden;">j</div>
+                </div>
+            </div>
+
+        </div>
+    }
+}

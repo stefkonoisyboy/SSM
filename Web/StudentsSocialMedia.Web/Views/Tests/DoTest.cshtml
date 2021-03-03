@@ -1,0 +1,95 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Questions.AllQuestionsByIdListViewModel
+@{
+    this.ViewData["Title"] = "Test";
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+
+    .btn {
+        width: 175px;
+    }
+</style>
+<body class="page-has-left-panels page-has-right-panels">
+    <div class="fixed-sidebar">
+        <div class="fixed-sidebar-left sidebar--small fixed-sidebar-responsive" id="sidebar-left" style="width: 240px; background-color: #3f4257; margin-top: 70px; border-top-style: solid;">
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="left-menu" style="font-size: 16px;">
+                    <li>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Groups" asp-action="Index">Groups</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Tests" asp-action="Index">Competition Page</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-light" asp-area="Forum" asp-controller="Categories" asp-action="All">Forum</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <header class="header" id="site-header">
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-568DJSG');</script>
+        <!-- End Google Tag Manager -->
+
+        <div class="page-title">
+            <div style="font-size: 16px;"><strong>SSM</strong></div>
+        </div>
+
+        <div class="header-content-wrapper">
+            <div class="control-block">
+                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-size: 16px;">Hello, @this.User.Identity.Name!</a>
+            </div>
+            <div class="control-block">
+                <a asp-controller="SearchUsers" asp-action="Search" class=" text-light" style="font-size: 16px; ">Click here to search for users</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-spacer"></div>
+
+    <h3 class="text-center">Test</h3>
+    <div class="row" style="visibility: hidden;">5555555</div>
+
+    <form method="post" style="padding-left: 13em;">
+        <ul>
+            @foreach (var question in this.Model.Questions)
+            {
+                <li style="padding-left: 10em;">
+                    @question.Text
+                    <input type="hidden" name="questionId" value="@question.Id" />
+                    <ul>
+                        @foreach (var choice in question.Choices)
+                        {
+                            <li style="padding-left: 5em;">
+                                @*<div class="row">*@
+                                <div style="margin-top: 20px;">@choice.Text</div>
+                                    <input type="radio" name="question_@question.Id" value="@choice.Id" style="margin-left: -480px; margin-top: -15px;" />
+                                @*</div>*@
+                            </li>
+                        }
+                    </ul>
+                </li>
+                <li class="row" style="visibility: hidden;">l</li>
+                <li class="row" style="visibility: hidden;">l</li>
+            }
+        </ul>
+        <div class="row justify-content-center" style="padding-left: 2em;">
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </form>
+</body>

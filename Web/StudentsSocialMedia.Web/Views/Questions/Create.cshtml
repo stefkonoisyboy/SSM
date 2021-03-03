@@ -1,0 +1,86 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Tests.CreateQuestionInputModel
+@{
+    this.ViewData["Title"] = "Create a Question";
+}
+
+<style>
+    .btn {
+        width: 175px;
+    }
+
+    label {
+        color: #515365;
+        font-size: 16px;
+    }
+
+    body {
+        background-color: #d5d6de;
+    }
+
+    .btn-success {
+        background-color: #3f4257;
+        border-color: #3f4257;
+    }
+</style>
+
+
+<div class="header-spacer"></div>
+
+<div class="row justify-content-center">
+
+    <div class="col-md-2"></div>
+    <form method="post" class="col-8 rounded border  p-3 mb-5 bg-white">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="row example mb-lg-5"></div>
+        <h1 class="text-center">@this.ViewData["Title"]</h1>
+        <div class="row example mb-lg-5"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group  col-sm-10">
+                <label asp-for="Text"></label>
+                <input asp-for="Text" class="form-control " style="border-color: #c0c3cf;"/>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row example mb-lg-4"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group  col-sm-10">
+                <label>Test</label>
+                <select asp-for="TestId" asp-items="@this.Model.TestsItems" class="form-control " style="border-color: #c0c3cf;"></select>
+                <span asp-validation-for="TestId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row example mb-lg-4"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group  col-sm-10" id="ChoicesContainer">
+                <label asp-for="Choices"></label>
+                <span class="row"></span>
+                <a class="btn btn-success" onclick="AddMoreChoices()">
+                    <label style="color: aliceblue">+</label>
+                </a>
+            </div>
+        </div>
+
+        <div class="row example mb-lg-5"></div>
+
+        <div class="row justify-content-center">
+            <input type="submit" class="btn btn-primary " style="border-color: #c0c3cf;" value="Submit" />
+        </div>
+        <div class="row example mb-lg-5"></div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        var choiceIndex = 0;
+        function AddMoreChoices() {
+            $("#ChoicesContainer").
+                append("<div class='form-control'>Content: <input type='text' name='Choices[" + choiceIndex + "].Text' /> Is Correct: <div class='form-radio'><div class='form-radio-item'><input type='radio' name='Choices[" + choiceIndex + "].IsCorrect' id='yes' value='yes' checked class='form-check-input' /><label for='yes' class='form-check-label'>Yes</label><span class='check'></span></div><div class='form-radio-item'><input type='radio' name='Choices[" + choiceIndex + "].IsCorrect' id='no' value='no' checked class='form-check-input' /><label for='no' class='form-check-label'>No</label><span class='check'></span></div></div>");
+            choiceIndex++;
+        }</script>
+}

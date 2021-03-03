@@ -1,0 +1,100 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Questions.AllQuestionsByIdListViewModel
+@inject Microsoft.AspNetCore.Identity.UserManager<StudentsSocialMedia.Data.Models.ApplicationUser> userManager
+@{
+    this.ViewData["Title"] = "Review of the Test";
+    var user = await this.userManager.GetUserAsync(this.User);
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+
+    .btn {
+        width: 175px;
+    }
+</style>
+<body class="page-has-left-panels page-has-right-panels">
+    <div class="fixed-sidebar">
+        <div class="fixed-sidebar-left sidebar--small fixed-sidebar-responsive" id="sidebar-left" style="width: 240px; background-color: #3f4257; margin-top: 70px; border-top-style: solid;">
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="left-menu" style="font-size: 16px;">
+                    <li>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Groups" asp-action="Index">Groups</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Tests" asp-action="Index">Competition Page</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-light" asp-area="Forum" asp-controller="Categories" asp-action="All">Forum</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <header class="header" id="site-header">
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-568DJSG');</script>
+        <!-- End Google Tag Manager -->
+
+        <div class="page-title">
+            <div style="font-size: 16px;"><strong>SSM</strong></div>
+        </div>
+
+        <div class="header-content-wrapper">
+            <div class="control-block">
+                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-size: 16px;">Hello, @this.User.Identity.Name!</a>
+            </div>
+            <div class="control-block">
+                <a asp-controller="SearchUsers" asp-action="Search" class=" text-light" style="font-size: 16px; ">Click here to search for users</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-spacer"></div>
+
+    <ul style="padding-left: 17.5em;">
+        @foreach (var question in this.Model.Questions)
+        {
+            <li>
+                @question.Text
+                <ul>
+                    @foreach (var choice in question.Choices)
+                    {
+                        <li style="padding-left: 2em;">
+                            @choice.Text
+                        </li>
+                    }
+                </ul>
+            </li>
+
+            <li class="row" style="visibility: hidden;">l</li>
+
+            @if (question.Answers.FirstOrDefault(a => a.UserId == user.Id).IsCorrect)
+            {
+                <li class="alert alert-success col-md-7"><img src="~/images/correct.png" alt="correct" style="width: 9px; margin-top: -2px; margin-right: 5px;" />Correct!</li>
+            }
+            else
+            {
+                <li class="alert alert-danger col-md-7"><img src="~/images/wrong.png" alt="wrong" style="width: 9px; margin-top: -2px; margin-right: 5px;"  />Your answer: @question.Answers.FirstOrDefault(a => a.UserId == user.Id).Text. The correct answer is @question.Choices.FirstOrDefault(c => c.IsCorrect).Text</li>
+            }
+        }
+    </ul>
+    <div class="row" style="visibility: hidden;">l</div>
+    <div class="row" style="visibility: hidden;">l</div>
+    <div class="row" style="visibility: hidden;">l</div>
+    <div class="row justify-content-center" style="padding-left: 2em;">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Go to Home</a>
+    </div>
+</body>

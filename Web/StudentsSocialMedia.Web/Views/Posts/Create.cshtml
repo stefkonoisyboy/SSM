@@ -1,0 +1,75 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Home.CreatePostInputModel
+@{
+    this.ViewData["Title"] = "Create post";
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+
+    label {
+        color: #515365;
+        font-size: 16px;
+    }
+
+    .btn {
+        width: 175px;
+    }
+    /*
+    .form-control {
+        border-color: #dedede;
+        border-width: 2px;
+    }*/
+
+</style>
+
+<div class="header-spacer"></div>
+
+<div class="row justify-content-center">
+    <div class="col-md-2"></div>
+    <form method="post" class="col-8 rounded border p-3 mb-5 bg-white">
+        <div class="row example mb-lg-5"></div>
+        <h1 class="text-center">@this.ViewData["Title"]</h1>
+
+        <div class="row example mb-lg-5"></div>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label>Content</label>
+                <textarea asp-for="Content" class="form-control" style="border-color: #c0c3cf;"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row example mb-lg-4"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label>Subject</label>
+                <select asp-for="SubjectId" asp-items="this.Model.Subjects" class="form-control" style="border-color: #c0c3cf;"></select>
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+        </div>
+
+        @if (this.User.IsInRole("Teacher"))
+        {
+            <div class="row example mb-lg-4"></div>
+            <div class="row justify-content-center">
+                <div class="form-group col-sm-10">
+                    <label>Group</label>
+                    <select asp-for="GroupId" asp-items="this.Model.GroupsItems" class="form-control" style="border-color: #c0c3cf;"></select>
+                    <span asp-validation-for="GroupId" class="text-danger"></span>
+                </div>
+            </div>
+        }
+
+        <div class="row example mb-lg-5"></div>
+        <div class="row justify-content-center col text-center">
+            <input type="submit" class="btn btn-primary btn-md-2 " value="Submit" />
+        </div>
+        <div class="row example mb-lg-5"></div>
+    </form>
+</div>

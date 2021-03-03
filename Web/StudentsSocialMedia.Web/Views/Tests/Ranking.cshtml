@@ -1,0 +1,60 @@
+﻿@model IEnumerable<StudentsSocialMedia.Web.ViewModels.Tests.RankingViewModel>
+@{
+    this.ViewData["Title"] = "Results";
+    int position = 1;
+}
+
+<style>
+    td {
+        font-size: 17px;
+    }
+
+    body {
+        background-color: #d5d6de;
+    }
+
+    thead.table-light {
+        background-color: #3f4257;
+        text-align: center;
+        font-size: 18px;
+        color: white;
+    }
+
+    tbody.table-light {
+        text-align: center;
+    }
+</style>
+
+<div class="header-spacer"></div>
+<div class="row example mb-lg-5 col-md-2"></div>
+<h1 class="text-center" style="padding-left: 4em;">@this.ViewData["Title"]</h1>
+<div class="row example mb-lg-4"></div>
+
+
+<div class="row justify-content-center">
+    <div class="col-md-2"></div>
+    <table class="table-bordered col-md-10">
+        <thead class="table-light">
+            <tr>
+                <th>№</th>
+                <th>User</th>
+                <th>Name</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+
+        <tbody class="table-light">
+            @foreach (var user in this.Model)
+            {
+                <tr>
+                    <td style="color: #3f4257" ;>@position</td>
+                    <td><a asp-controller="Profiles" asp-action="Timeline" asp-route-id="@user.Id">@user.UserName</a></td>
+                    <td style="color:#3f4257;">@(user.FirstName + ' '+ user.LastName)</td>
+                    <td style="color: #3f4257;">@user.TestPoints</td>
+                </tr>
+                position++;
+            }
+        </tbody>
+    </table>
+</div>
+

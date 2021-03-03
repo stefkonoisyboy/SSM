@@ -1,0 +1,73 @@
+﻿<style>
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+<body class="page-has-left-panels page-has-right-panels">
+    <div class="fixed-sidebar">
+        <div class="fixed-sidebar-left sidebar--small fixed-sidebar-responsive" id="sidebar-left" style="width: 240px; background-color: #3f4257; margin-top: 70px; border-top-style: solid;">
+
+            @*<a href="02-ProfilePage.html" class="logo">
+                    <div class="img-wrap">
+                        <img loading="lazy" src="img/logo.png" alt="Olympus">
+                    </div>
+                </a>*@
+
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="left-menu" style="font-size: 16px;">
+                    <li>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Groups" asp-action="Index">Groups</a>
+                    </li>
+                    <li>
+                        <a class="text-light" asp-controller="Tests" asp-action="Index">Competition Page</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-light" asp-area="Forum" asp-controller="Categories" asp-action="All">Forum</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <header class="header" id="site-header">
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-568DJSG');</script>
+        <!-- End Google Tag Manager -->
+
+        <div class="page-title">
+            <div style="font-size: 16px;"><strong>SSM</strong></div>
+        </div>
+
+        <div class="header-content-wrapper">
+            <div class="control-block">
+                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-size: 16px;">Hello, @this.User.Identity.Name!</a>
+            </div>
+            <div class="control-block">
+                <a asp-controller="SearchUsers" asp-action="Search" class=" text-light" style="font-size: 16px; ">Click here to search for users</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-spacer"></div>
+
+    <div class="row justify-content-center" style="margin-left: 50px;"><h1>Result: @this.ViewBag.Points points</h1></div>
+    <div class="row" style="visibility: hidden;">5555555</div>
+
+    <div class="row justify-content-center" style="margin-left: 50px;">
+        <a asp-action="Review" asp-route-id="@this.ViewBag.TestId" class="btn btn-outline-primary" style="font-size:16px;">Review the Test</a>
+    </div>
+    <div class="row justify-content-center" style="margin-left: 50px;">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary" style="font-size:16px;">Go to Home</a>
+    </div>
+</body>

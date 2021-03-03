@@ -1,0 +1,63 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Forum.Categories.AllCategoriesListViewModel
+@{
+    this.ViewData["Title"] = "All categories in our forum";
+}
+
+<style>
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+<div class="fixed-sidebar">
+    <div class="fixed-sidebar-left sidebar--small fixed-sidebar-responsive" id="sidebar-left" style="width: 240px; background-color: #3f4257; margin-top: 70px; border-top-style: solid;">
+
+        @*<a href="02-ProfilePage.html" class="logo">
+                <div class="img-wrap">
+                    <img loading="lazy" src="img/logo.png" alt="Olympus">
+                </div>
+            </a>*@
+
+        <div class="mCustomScrollbar" data-mcs-theme="dark">
+            <ul class="left-menu" style="font-size: 16px;">
+                <li>
+                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li>
+                    <a class="text-light" asp-area="" asp-controller="Groups" asp-action="Index">Groups</a>
+                </li>
+                <li>
+                    <a class="text-light" asp-area="" asp-controller="Tests" asp-action="Index">Competition Page</a>
+                </li>
+                <li>
+                    <a class="nav-link text-light" asp-area="Forum" asp-controller="Categories" asp-action="All">Forum</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="header-spacer"></div>
+<h1 class="display-3 text-center" style="padding-left: 2em;">@this.ViewData["Title"]</h1>
+<div class="row example" style="visibility: hidden;">j</div>
+
+<div class="row justify-content-center" style="padding-left:7em;">
+    <a asp-area="Forum" asp-controller="Posts" asp-action="Create" class="btn btn-primary">Create new forum post</a>
+</div>
+<div class="header-spacer" style="height:50px;"></div>
+
+<div class="row" style="padding-left: 17em;">
+
+    @foreach (var category in Model.Categories)
+    {<div class="col-md-1"></div>
+        <div class="col-md-5 media">
+            <div class="media-body" style="margin-bottom: 10px;">
+                <h5 class="mt-2">
+                    <img src="@category.RemoteImageUrl" style="width: 140px; height:100px;" class="mr-3" alt="@category.Title">
+                    <a asp-controller="Posts" asp-action="AllById" asp-route-id="@category.Id" style="color: #3f4257;">
+
+                        @category.Title (@category.PostsCount)
+                    </a>
+                </h5>
+            </div>
+        </div>
+    }
+</div>

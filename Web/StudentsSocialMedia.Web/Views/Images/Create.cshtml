@@ -1,0 +1,49 @@
+﻿@model StudentsSocialMedia.Web.ViewModels.Images.CreateImageInputModel
+@{
+    this.ViewData["Title"] = "Add photos to your gallery";
+}
+
+<style>
+    .btn {
+        width: 175px;
+    }
+
+    label {
+        color: #515365;
+        font-size: 16px;
+    }
+
+    body {
+        background-color: #d5d6de;
+    }
+</style>
+
+
+<div class="header-spacer"></div>
+
+<div class="row justify-content-center">
+    <div class="col-md-2"></div>
+    <form method="post" class="col-8 rounded border  p-3 mb-5 bg-white" enctype="multipart/form-data">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="row example mb-lg-5"></div>
+        <h1 class="text-center">@this.ViewData["Title"]</h1>
+        <div class="row example mb-lg-5"></div>
+
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-10">
+                <label asp-for="Images"></label>
+                <input asp-for="Images" class="form-control " style="border-color: #c0c3cf;"/>
+                <span asp-validation-for="Images" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row example mb-lg-5"></div>
+
+        <div class="row justify-content-center">
+            <input type="submit" class="btn btn-primary " value="Submit" />
+        </div>
+        <div class="row example mb-lg-5"></div>
+    </form>
+</div>
